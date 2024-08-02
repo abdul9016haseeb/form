@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            background: url('https://i0.wp.com/picjumbo.com/wp-content/uploads/bahamas-beach-scenery-with-sandy-beach-free-photo.jpeg?w=2210&quality=70') no-repeat center fixed;
+            background-size: cover;
+
+        }
+
+        .card {
+            background-color: rgb(255, 255, 255, 0.5);
+        }
+
+        /* .table{
+            display: none;
+        }
+        #submit:active .table{
+            display: block;
+        } */
+
+        @media only screen and (min-width: 992px) {
+            .container {
+                width: 55%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <form autocomplete="on">
+                <div class="card mt-4 mb-4 mx-auto">
+                    <div class="card-header">
+                        <h2 class="text-center">Student Registration Form</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="fname" class="form-label">First Name</label>
+                                    <input required placeholder="Enter firstname" type="text" name="fname" id="fname"
+                                        class="form-control" maxlength="15">
+                                    <span id="firstfield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="lname" class="form-label">Last Name</label>
+                                    <input required placeholder="Enter lastname" type="text" name="lname" id="lname"
+                                        class="form-control" maxlength="15">
+                                    <span id="lastfield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div>
+                                    <label for="Email" class="form-label">Email</label>
+                                    <input required type="email" name="Email" placeholder="Enter email" id="Email"
+                                        class="form-control">
+                                    <span id="emailfield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input required type="password" name="password" id="password" class="form-control"
+                                        placeholder="Enter password" maxlength="10">
+                                    <span id="passfield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="cpassword" class="form-label">Confirm Password</label>
+                                    <input required type="password" name="confirm-password" id="cpassword"
+                                        class="form-control" placeholder="Confirm Password" maxlength="10">
+                                    <span id="passconfirmfield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="number" class="form-label">Phone Number</label>
+                                    <input required type="text" name="number" id="number" class="form-control"
+                                        placeholder="enter phone number" pattern="[0-9]{10}" maxlength="10">
+                                    <span id="phonefield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="dateofbirth" class="form-label">Date of Birth</label>
+                                    <input required type="date" max="2005-12-31" name="dateofbirth" id="dateofbirth"
+                                        class="form-control">
+                                    <span id="Datefield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="college" class="form-label">College</label>
+                                    <input required type="text" list="colleges" name="college" id="college"
+                                        class="form-control" placeholder="college name">
+                                    <datalist id="colleges">
+                                        <option value="Leshmipuram college of arts and science">
+                                        <option value="St.xaviers college">
+                                        <option value="Scott christian college">
+                                        <option value="PET Engineering college">
+                                        <option value="ASCET college">
+                                    </datalist>
+                                    <span id="collegefield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <label for="course" class="form-label">Course</label>
+
+                                    <select required type="text" name="course" id="course" class="form-control"
+                                        placeholder="course">
+                                        <option value="React">React</option>
+                                        <option value="Angular">Angular</option>
+                                        <option value="Vue js">Vue js</option>
+
+                                    </select>
+                                    <span id="coursefield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <label for="gender" class="form-label">Gender
+                                </label>
+                                <div class="form-check mx-3">
+                                    <input required class="form-check-input" type="radio" name="gender" value="Male"
+                                        id="Male">
+                                    <label for="gender" class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input required class="form-check-input" type="radio" value="Female" name="gender"
+                                        id="Female">
+                                    <label for="gender" class="form-check-label">Female</label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input required class="form-check-input" type="radio" value="Other" name="gender"
+                                        id="Other">
+                                    <label for="gender" class="form-check-label">Other</label>
+                                </div>
+                                <span id="genderfield" style="font-size: 12px;color: red;"></span>
+                                <br>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="gender" class="form-label">Select Language
+                                </label>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="checkbox" name="language" id="Tamil"
+                                        value="Tamil">
+                                    <label for="language" class="form-check-label">Tamil</label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="checkbox" name="language" id="Malayalam"
+                                        value="Malayam">
+                                    <label for="language" class="form-check-label">Malayalam</label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="checkbox" name="language" id="Hindi"
+                                        value="Hindi">
+                                    <label for="language" class="form-check-label">Hindi</label>
+                                </div>
+                                <span id="languagefield" style="font-size: 12px;color: red;"></span>
+                                <br>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+                                    <label for="Uploadimage" class="form-label">Upload Image</label>
+                                    <input required type="file" name="Uploadimage" id="Upload" class="form-control"
+                                        onchange="storeImage()">
+                                    <span id="Uploadfield" style="font-size: 12px;color: red;"></span>
+                                    <br>
+
+                                </div>
+                                <div class="container-fluid position-relative">
+                                    <img id="storedImage" class="bg-white d-inline-block rounded-3"
+                                        style="width: 150px; height: 120px;" alt="">
+                                    <p class="position-absolute" style="top: 48px;left: 30px;opacity: 0.3;">Image
+                                        preview</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+                                    <label for="Address" class="form-label">Address</label>
+                                    <textarea name="Address" id="Address" class="form-control" rows="5"
+                                        style="resize: none;"></textarea>
+                                    <p id="addressfield" style="font-size: 12px;color: red;"></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+                                    <input class="form-check-input" type="checkbox" name="agree" id="agree"
+                                        value="agree">
+                                    <label for="agree" class="form-label">I agree the terms and conditions</label>
+                                    <p id="agreefield" style="font-size: 12px;color: red;"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                        </div>
+
+                        <div class="card-footer mt-3">
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="border-5">
+                                        <input required type="reset" value=" Clear " class="btn btn-primary"
+                                            title="Clear">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 text-end">
+                                    <div>
+                                        <input required type="button" value=" Submit " name="submit" id="submit"
+                                            class="btn btn-primary" onclick="output()" title="submit">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            <div id="output" class="text-bg-light ">
+
+                <table class="table">
+                    <tr id="firstname"></tr>
+                    <tr id="lastname"></tr>
+                    <tr id="email"></tr>
+                    <tr id="Password"></tr>
+                    <tr id="phno"></tr>
+                    <tr id="dob"></tr>
+                    <tr id="collegeName"></tr>
+                    <tr id="Course"></tr>
+                    <tr id="gender"></tr>
+                    <tr id="language"></tr>
+                    <tr id="address"></tr>
+                    <tr id="Image"></tr>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="assests/js/script.js">
+
+        // localStorage.clear();
+        // console.log(localStorage.length);
+    </script>
+</body>
+
+</html>

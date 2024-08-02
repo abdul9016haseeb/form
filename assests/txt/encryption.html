@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Image in Local Storage</title>
+</head>
+<body>
+    <input type="file" id="imageInput" />
+    <button onclick="storeImage()">Store Image</button>
+    <button onclick="retrieveImage()">Retrieve Image</button>
+    <br/>
+    <img id="storedImage" />
+    <br/>
+    <img id="retrievedImage" />
+
+    <script>
+        function storeImage() {
+            const imageInput = document.getElementById('imageInput').files[0];
+            if (!imageInput) {
+                alert("Please select an image to store.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64String = event.target.result;
+                localStorage.setItem("storedImage", base64String);
+                document.getElementById('storedImage').src = base64String;
+                alert("Image stored in local storage.");
+            };
+            reader.readAsDataURL(imageInput);
+        }
+
+        function retrieveImage() {
+            const base64String = localStorage.getItem("storedImage");
+            if (!base64String) {
+                alert("No image found in local storage.");
+                return;
+            }
+            document.getElementById('retrievedImage').src = base64String;
+            console.log()
+            alert("Image retrieved from local storage.");
+        }
+    </script>
+</body>
+</html>

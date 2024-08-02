@@ -1,0 +1,334 @@
+
+function filechecking() {
+    let File = document.getElementById("Upload");
+    
+    if (File.files.length === 0) {
+        document.getElementById("Uploadfield").innerText = "Please upload an image";
+        return false;
+    }
+
+    let fileName = File.files[0].name;
+    let fileSize = File.files[0].size;
+    let fileType = File.files[0].type;
+    let fileModifiedDate = File.files[0].lastModifiedDate;
+
+    let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    let maxSize = 3 * 1024 * 1024; // 3 MB
+
+    if (!allowedExtensions.exec(fileName)) {
+        document.getElementById("Uploadfield").innerText = "Only JPG, JPEG, and PNG files are allowed";
+        File.value = ''; // Clear the file input
+        return false;
+    }
+
+    if (fileSize > maxSize) {
+        document.getElementById("Uploadfield").innerText = "File size should not exceed 3 MB";
+        File.value = ''; // Clear the file input
+        return false;
+    }
+
+    let file_info = `File Name: ${fileName}\nFile Size: ${fileSize} bytes\nFile Type: ${fileType}\nLast Modified: ${fileModifiedDate}`;
+//   document.getElementById("Image").innerHTML = `File Name: ${fileName}`;
+
+    document.getElementById("Uploadfield").innerText = ''; // Clear any previous error messages
+    return fileName;
+}
+
+function output() {
+
+    // document.getElementById("output").style.display = "none";
+    let text = "";
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkedValues = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    // console.log(checkedValues);
+    const radioboxes = document.querySelectorAll('input[type="radio"]');
+    const radiovalues = Array.from(radioboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    // console.log(radiovalues);
+    const obj = {
+        firstname: document.getElementById("fname").value,
+        lastname: document.getElementById("lname").value,
+        Email: document.getElementById("Email").value,
+        password: document.getElementById("password").value,
+        cpassword: document.getElementById("cpassword").value,
+        phno: Number(document.getElementById("number").value),
+        dob: document.getElementById("dateofbirth").value,
+        collegeName: document.getElementById("college").value,
+        course: document.getElementById("course").value,
+        gender: radiovalues,
+        language: checkedValues,
+        Address: document.getElementById("Address").value,
+
+    }
+
+
+
+    //destructing
+    let { firstname, lastname, Email, password, cpassword, phno, dob, collegeName, course, gender, language, Address } = obj;
+
+
+    // console.log(isNaN(firstname));
+
+
+    {//firstname
+        // console.log(firstname.length);
+
+        if (firstname.length == 0) {
+            document.getElementById("firstfield").innerHTML = "Please fill out the field";
+
+        }
+        else if (firstname.length > 0) {
+            document.getElementById("firstfield").innerHTML = "";
+            let y = "invalid"
+            for (let x of firstname) {
+                if (isNaN(x) == false) {
+                    document.getElementById("firstfield").innerHTML = y;
+                    console.log("Invalid Name");
+                    break;
+                }
+                else {
+                    continue;
+                }
+            }
+        }
+        // else { 
+
+        // }
+    }
+
+
+
+    {//lastname
+
+
+        if (lastname.length == 0) {
+            document.getElementById("lastfield").innerHTML = "Please fill out the field";
+
+        }
+        else if (lastname.length > 0) {
+            document.getElementById("lastfield").innerHTML = "";
+            let y = "invalid"
+            for (let x of lastname) {
+                if (isNaN(x) == false) {
+                    document.getElementById("lastfield").innerHTML = y;
+                    console.log("Invalid Name");
+                    break;
+                }
+                else {
+                    continue;
+                }
+            }
+        }
+        // if (lastname == "") {
+        //     document.getElementById("lastfield").innerHTML = "Please fill out the field";
+        // }
+        // else {
+        //     document.getElementById("lastfield").innerHTML = "";
+
+        // }
+    }
+
+
+
+    {//email
+        {
+            if (Email == "") {
+                document.getElementById("emailfield").innerHTML = "Please fill out the field";
+            } else if (Email.search("@gmail.com") == -1) {
+                document.getElementById("emailfield").innerHTML = "Enter correct email";
+                Email = "Invalid email";
+
+
+            } else {
+                document.getElementById("emailfield").innerHTML = "";
+
+            }
+        }
+    }
+
+
+
+    {//password 
+        {//password fill out the field
+            if (password == "") {
+                document.getElementById("passfield").innerHTML = "Please fill out the field";
+
+            } else {
+                document.getElementById("passfield").innerHTML = "";
+
+            }
+        }
+        {//password checking
+            if ((cpassword.length) < 5 && (cpassword.length) != 0) {
+                document.getElementById("passconfirmfield").innerHTML = "Please enter alteast 5 characters";
+                // cpassword = "Invalid Password";
+
+
+            } else if (cpassword == "") {
+                document.getElementById("passconfirmfield").innerHTML = "Please fill out the field";
+
+            } else if (password != cpassword) {
+                document.getElementById("passconfirmfield").innerHTML = "Invalid password";
+
+
+                cpassword = "Invalid Password";
+            } else {
+                document.getElementById("passconfirmfield").innerHTML = "";
+
+            }
+        }
+    }
+
+
+
+    let verify = isNaN(phno);
+    {//phone number 
+        {//phone number checking
+
+            // console.log(phno);
+            if (phno == 0) {
+
+                document.getElementById("phonefield").innerHTML = "Please fill out the field";
+                // phno = "null";
+
+            }
+            else if (verify == true || phno >= 9999999999 || phno <= 999999999) {
+                document.getElementById("phonefield").innerHTML = "Invalid Phone number";
+
+                // phno = "invalid Phone number";
+            } else {
+                document.getElementById("phonefield").innerHTML = "";
+            }
+        }
+    }
+
+
+
+    {//Date of Birth
+        let date = new Date(`${dob}`).getFullYear();
+        {
+            if (date >= 2006 || date >= 2024) {
+                date = "invalid date";
+                dob = null;
+                document.getElementById("Datefield").innerHTML = "Invalid";
+                // console.log(date);
+            } else if (dob == 0) {
+                document.getElementById("Datefield").innerHTML = "Please fill out the field";
+                //   console.log(date);
+            }
+            else {
+                document.getElementById("Datefield").innerHTML = "";
+
+            }
+        }
+    }
+
+
+
+    {//college name
+        {
+            if (collegeName == "") {
+                document.getElementById("collegefield").innerHTML = "Please fill out the field";
+            }
+            else {
+                document.getElementById("collegefield").innerHTML = "";
+            }
+        }
+    }
+
+
+
+    {//course
+        {
+            if (course == "") {
+                document.getElementById("coursefield").innerHTML = "Please fill out the field";
+            }
+            else {
+                document.getElementById("coursefield").innerHTML = "";
+            }
+        }
+    }
+
+
+
+    {//gender
+        {
+            if (gender == "") {
+                document.getElementById("genderfield").innerHTML = "Please fill out the field";
+            }
+            else {
+                document.getElementById("genderfield").innerHTML = "";
+            }
+        }
+    }
+
+
+
+    {//language
+        {
+            language.forEach(languagefunction);
+            function languagefunction(value) {
+                text += value + " ";
+            }
+            // console.log(((text.length)==0));
+        }
+        {
+            if (language == "") {
+                document.getElementById("languagefield").innerHTML = "Please fill out the field";
+            }
+            else {
+                document.getElementById("languagefield").innerHTML = "";
+            }
+        }
+    }
+
+   
+    filechecking();
+
+    {//Address
+        if (Address == "") {
+            document.getElementById("addressfield").innerHTML = "Please fill out the field";
+            // console.log("Please fill out the field");
+        }
+        else {
+            document.getElementById("addressfield").innerHTML = "";
+        }
+    }
+
+
+
+    {//Printing
+
+            if (firstname == "" || lastname == "" || Email == ""||(Email.search("@gmail.com") == -1)  ||(cpassword!=password)|| ((cpassword.length) < 5&&(cpassword.length)!=0) || phno == undefined||(verify == true || phno >= 9999999999 || phno <= 999999999) || dob == undefined ||
+                collegeName == "" || course == "" || gender == "" || text == "" || Address == ""||((text.length)==0)||(filechecking()==false)) {
+
+                    document.getElementById("firstname").innerHTML = "";
+                    document.getElementById("lastname").innerHTML = "";
+                    document.getElementById("email").innerHTML = "";
+                    document.getElementById("Password").innerHTML = "";
+                    document.getElementById("phno").innerHTML = "";
+                    document.getElementById("dob").innerHTML = "";
+                    document.getElementById("collegeName").innerHTML =""; 
+                    document.getElementById("Course").innerHTML = "";
+                    document.getElementById("gender").innerHTML = "";
+                    document.getElementById("language").innerHTML = "";
+                    document.getElementById("address").innerHTML = "";
+                    document.getElementById("Image").innerHTML = "";
+
+
+            } else {
+        document.getElementById("output").style.display = "block";
+        //        document.getElementById("firstname").innerHTML = `<td>FirstName:</td>   <td>${firstname}</td>`;
+        document.getElementById("lastname").innerHTML = `<td>Lastname:</td>   <td>${lastname}</td>`;
+        document.getElementById("email").innerHTML = `<td>Email:</td>   <td>${Email}</td>`;
+        document.getElementById("Password").innerHTML = `<td>Password:</td>   <td>${cpassword}</td>`;
+        document.getElementById("phno").innerHTML = `<td>Phone Number:</td>   <td>${phno}</td>`;
+        document.getElementById("dob").innerHTML = `<td>Date Of Birth:</td>   <td>${dob}</td>`;
+        document.getElementById("collegeName").innerHTML = `<td>College:</td>   <td>${collegeName}</td>`;
+        document.getElementById("Course").innerHTML = `<td>Course:</td>   <td>${course}</td>`;
+        document.getElementById("gender").innerHTML = `<td>Gender:</td>   <td>${gender}</td>`;
+        document.getElementById("language").innerHTML = `<td>language: </td>   <td>${text}</td>`;
+        document.getElementById("address").innerHTML = `<td>Address:</td>   <td>${Address}</td>`;
+        document.getElementById("Image").innerHTML = `<td>Image:</td>   <td>${filechecking()}</td>`;
+            }
+    }
+}
